@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include "ILineDriver.h"
 #include "FlipDotMatrixDisplay.h"
-
+#include "MiniBitmap.h"
 
 template<int w, int h>
 FlipDotMatrixDisplay<w, h>::FlipDotMatrixDisplay(ILineDriver& rowDriver, ILineDriver& colDriver) :
@@ -73,6 +73,21 @@ bool FlipDotMatrixDisplay<width, height>::Update(uint8_t col, uint8_t row, bool 
     }
     return needUpdate;
 }
+
+template<int w, int h>
+void FlipDotMatrixDisplay<w, h>::ShowBitmap(uint8_t column, uint8_t row, const MiniBitmap& bitmap)
+{
+    const uint8_t width = bitmap.GetWidth();
+    const uint8_t height = bitmap.GetHeight();
+    for (int y = 0; y < height; y++)
+    {
+        for (int x = 0; x < width; x++)
+        {
+            Dot(column + x, row + y, bitmap.Get(x, y));
+        }
+    }
+}
+
 
 template class FlipDotMatrixDisplay<25, 6>;
 template class FlipDotMatrixDisplay<25, 7>;
