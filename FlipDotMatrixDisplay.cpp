@@ -29,13 +29,16 @@ void FlipDotMatrixDisplay<w, h>::Reset()
 template<int w, int h>
 void FlipDotMatrixDisplay<w, h>::Dot(uint8_t col, uint8_t row, bool set)
 {
-    if (Update(col, row, set))
+    if (col < w && row < h)
     {
-        rowDriver.EnableLine(row, set);
-        colDriver.EnableLine(col, !set);
-        delay(1);
-        colDriver.DisableLines();
-        rowDriver.DisableLines();
+        if (Update(col, row, set))
+        {
+            rowDriver.EnableLine(row, set);
+            colDriver.EnableLine(col, !set);
+            delay(1);
+            colDriver.DisableLines();
+            rowDriver.DisableLines();
+        }
     }
 }
 
