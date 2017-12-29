@@ -9,7 +9,10 @@ FP2800ABipolarLineDriver::FP2800ABipolarLineDriver(FP2800A& fp2800a) :
 
 void FP2800ABipolarLineDriver::EnableLine(uint8_t line, bool set)
 {
-    fp2800a.EnableDriver(line, set);
+    if (line < lines)
+    {
+        fp2800a.EnableDriver(line, set);
+    }
 }
 
 void FP2800ABipolarLineDriver::DisableLines()

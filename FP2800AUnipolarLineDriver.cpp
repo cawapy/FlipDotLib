@@ -9,7 +9,7 @@ FP2800AUnipolarLineDriver::FP2800AUnipolarLineDriver(FP2800A& fp2800a) :
 
 void FP2800AUnipolarLineDriver::EnableLine(uint8_t line, bool set)
 {
-    if (line < 14)
+    if (line < lines)
     {
         fp2800a.EnableDriver(set ? line + 14 : line, set);
     }
