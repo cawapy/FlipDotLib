@@ -20,5 +20,6 @@ public:
     void EnableBuffer() { useBuffer = true; }
 private:
     bool Update(uint8_t col, uint8_t row, bool set);
+    void SetDot(uint8_t col, uint8_t row, bool set);
 };
 

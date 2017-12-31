@@ -34,13 +34,19 @@ void FlipDotMatrixDisplay<w, h>::Dot(uint8_t col, uint8_t row, bool set)
     {
         if (Update(col, row, set) || !useBuffer)
         {
-            rowDriver.EnableLine(row, set);
-            colDriver.EnableLine(col, !set);
-            delay(1);
-            colDriver.DisableLines();
-            rowDriver.DisableLines();
+            SetDot(col, row, set);
         }
     }
+}
+
+template<int w, int h>
+void FlipDotMatrixDisplay<w, h>::SetDot(uint8_t col, uint8_t row, bool set)
+{
+    rowDriver.EnableLine(row, set);
+    colDriver.EnableLine(col, !set);
+    delay(1);
+    colDriver.DisableLines();
+    rowDriver.DisableLines();
 }
 
 template<int w, int h>
