@@ -6,7 +6,8 @@
 template<int w, int h>
 FlipDotMatrixDisplay<w, h>::FlipDotMatrixDisplay(ILineDriver& rowDriver, ILineDriver& colDriver) :
     rowDriver(rowDriver),
-    colDriver(colDriver)
+    colDriver(colDriver),
+    useBuffer(false)
 {
 }
 
@@ -31,7 +32,7 @@ void FlipDotMatrixDisplay<w, h>::Dot(uint8_t col, uint8_t row, bool set)
 {
     if (col < w && row < h)
     {
-        if (Update(col, row, set))
+        if (Update(col, row, set) || !useBuffer)
         {
             rowDriver.EnableLine(row, set);
             colDriver.EnableLine(col, !set);
