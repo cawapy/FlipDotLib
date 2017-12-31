@@ -89,9 +89,9 @@ void FlipDotMatrixDisplay<w, h>::ShowBitmap(uint8_t column, uint8_t row, const M
 {
     const uint8_t width = bitmap.GetWidth();
     const uint8_t height = bitmap.GetHeight();
-    for (int y = 0; y < height; y++)
+    for (int x = 0; x < width; x++)
     {
-        for (int x = 0; x < width; x++)
+        for (int y = 0; y < height; y++)
         {
             Dot(column + x, row + y, bitmap.Get(x, y));
         }
