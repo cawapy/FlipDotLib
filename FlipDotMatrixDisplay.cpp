@@ -4,9 +4,10 @@
 #include "MiniBitmap.h"
 
 template<int w, int h>
-FlipDotMatrixDisplay<w, h>::FlipDotMatrixDisplay(ILineDriver& rowDriver, ILineDriver& colDriver) :
+FlipDotMatrixDisplay<w, h>::FlipDotMatrixDisplay(ILineDriver& rowDriver, ILineDriver& colDriver, void(*underVoltageGuard)(void) /* = 0 */) :
     rowDriver(rowDriver),
     colDriver(colDriver),
+    underVoltageGuard(underVoltageGuard),
     useBuffer(false)
 {
 }
@@ -42,11 +43,21 @@ void FlipDotMatrixDisplay<w, h>::Dot(uint8_t col, uint8_t row, bool set)
 template<int w, int h>
 void FlipDotMatrixDisplay<w, h>::SetDot(uint8_t col, uint8_t row, bool set)
 {
+    UnderVoltageGuard();
     rowDriver.EnableLine(row, set);
     colDriver.EnableLine(col, !set);
     delay(1);
     colDriver.DisableLines();
     rowDriver.DisableLines();
+}
+
+template<int w, int h>
+void FlipDotMatrixDisplay<w, h>::UnderVoltageGuard()
+{
+    if (underVoltageGuard)
+    {
+        (*underVoltageGuard)();
+    }
 }
 
 template<int w, int h>
