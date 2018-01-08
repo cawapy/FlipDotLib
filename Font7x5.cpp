@@ -408,10 +408,10 @@ MiniBitmap Font7x5::GetCharacter(char character)
 
         Char7x5('r',
             0b1111100,
-            0b1111000,
+            0b1111100,
             0b0000100,
             0b0001100,
-            0b0001100);
+            0b0001000);
 
         Char7x5('s',
             0b1001000,
