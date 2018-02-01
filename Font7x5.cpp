@@ -191,16 +191,16 @@ MiniBitmap Font7x5::GetCharacter(char character)
 
         Char7x5('M',
             0b1111111,
-            0b1111110,
+            0b0000110,
             0b0001100,
-            0b1111110,
+            0b0000110,
             0b1111111);
 
         Char7x5('N',
             0b1111111,
-            0b1111100,
-            0b0001000,
-            0b0011111,
+            0b0000110,
+            0b0001100,
+            0b0011000,
             0b1111111);
 
         Char7x5('O',
@@ -261,9 +261,9 @@ MiniBitmap Font7x5::GetCharacter(char character)
 
         Char7x5('W',
             0b1111111,
-            0b0111111,
+            0b0110000,
             0b0011000,
-            0b0111111,
+            0b0110000,
             0b1111111);
 
         Char7x5('X',
@@ -408,9 +408,9 @@ MiniBitmap Font7x5::GetCharacter(char character)
 
         Char7x5('r',
             0b1111100,
-            0b1111100,
+            0b1111000,
             0b0000100,
-            0b0001100,
+            0b0000100,
             0b0001000);
 
         Char7x5('s',
@@ -442,11 +442,11 @@ MiniBitmap Font7x5::GetCharacter(char character)
             0b0011100);
 
         Char7x5('w',
-            0b1111100,
             0b0111100,
-            0b0010000,
-            0b0111100,
-            0b1111100);
+            0b1110000,
+            0b0111000,
+            0b1110000,
+            0b0111100);
 
         Char7x5('x',
             0b1101100,
