@@ -19,9 +19,9 @@ void FlipDotMatrixDisplay<w, h>::Reset()
     {
         buffer[i] = 0xff;
     }
-    for (uint8_t col = 0; col < w; col++)
+    for (uint8_t row = 0; row < h; row++)
     {
-        for (uint8_t row = 0; row < h; row++)
+        for (uint8_t col = 0; col < w; col++)
         {
             Dot(col, row, false);
         }
